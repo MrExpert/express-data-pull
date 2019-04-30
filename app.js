@@ -38,12 +38,12 @@ app.get('/api/TodoItems', (req, res) => {
 });
 
 app.get('/api/TodoItems/:number', (req, res) => {
+  
   var num = req.params.number ;
-  console.log(num); // outputs number as expected, but doesn't pass into "result"
-  // if i assign it a number "1", it works
-  //   num = 1 ; 
- var result = data.find(data => {data.todoItemId === num});
-    res.status(200).send(result);
+
+  var result = data.filter(item => item.todoItemId == num ? true : null);
+  console.log("reluts after the filter is :" + result);
+  res.status(200).send(result);
 });
 
 app.listen(3000, () => {
